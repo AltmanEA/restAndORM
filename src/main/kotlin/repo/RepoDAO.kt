@@ -17,13 +17,13 @@ open class RepoDAO<T : Item>(
 
     override fun read(id: Int) =
             transaction {
-                companion.findById(id)?.dto
+                companion.findById(id)?.obj
             }
 
     override fun read() =
             transaction {
                 companion.all().map {
-                    it.dto
+                    it.obj
                 }
             }
 

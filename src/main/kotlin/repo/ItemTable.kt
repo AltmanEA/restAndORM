@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.statements.UpdateBuilder
 import org.jetbrains.exposed.sql.update
 
-abstract class RepoDSLTable<T: Item>
+abstract class ItemTable<T: Item>
     : IntIdTable(){
     abstract fun fill(builder: UpdateBuilder<Int>, item: T): Unit
     abstract fun readResult(result: ResultRow): T?
@@ -18,7 +18,7 @@ abstract class RepoDSLTable<T: Item>
 
     fun updateItem(id: Int, dto: T) =
             update({
-                this@RepoDSLTable.id eq id
+                this@ItemTable.id eq id
             }){
                 fill(it, dto)
             }

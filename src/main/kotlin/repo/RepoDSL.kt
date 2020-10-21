@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class RepoDSL<T : Item>(
-        private val table: RepoDSLTable<T>
+        private val table: ItemTable<T>
 ) : Repo<T> {
 
     override fun create(element: T) =
@@ -42,5 +42,4 @@ class RepoDSL<T : Item>(
                             table.readResult(it)
                         }
             }
-
 }
